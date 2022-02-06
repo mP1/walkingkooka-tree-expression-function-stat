@@ -34,8 +34,48 @@ public final class StatExpressionFunctions implements PublicStaticHelper {
      * Visit all {@link ExpressionFunction functions}.
      */
     public static void visit(final Consumer<ExpressionFunction<?, ?>> consumer) {
-        Lists.<ExpressionFunction<?, ?>>of()
-                .forEach(consumer);
+        Lists.of(average(),
+                count(),
+                max(),
+                min(),
+                sum()
+        ).forEach(consumer);
+    }
+
+
+    /**
+     * {@see NumberExpressionFunctionAverage}
+     */
+    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> average() {
+        return NumberExpressionFunctionAverage.instance();
+    }
+
+    /**
+     * {@see NumberExpressionFunctionCount}
+     */
+    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> count() {
+        return NumberExpressionFunctionCount.instance();
+    }
+
+    /**
+     * {@see NumberExpressionFunctionMax}
+     */
+    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> max() {
+        return NumberExpressionFunctionMax.instance();
+    }
+
+    /**
+     * {@see NumberExpressionFunctionMin}
+     */
+    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> min() {
+        return NumberExpressionFunctionMin.instance();
+    }
+
+    /**
+     * {@see NumberExpressionFunctionSum}
+     */
+    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> sum() {
+        return NumberExpressionFunctionSum.instance();
     }
 
     /**

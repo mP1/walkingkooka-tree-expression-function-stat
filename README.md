@@ -12,6 +12,12 @@ A collection of ExpressionFunction(s) that operate mostly on lists and are stati
 
 ## Available functions
 
+- average(number...)
+- count(object...)
+- max(number...)
+- min(number...)
+- sum(number...)
+
 Many more functions are outstanding and remain TODO.
 
 
