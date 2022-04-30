@@ -24,10 +24,12 @@ import walkingkooka.tree.expression.ExpressionNumber;
 import walkingkooka.tree.expression.ExpressionNumberKind;
 import walkingkooka.tree.expression.function.ExpressionFunction;
 import walkingkooka.tree.expression.function.ExpressionFunctionContext;
+import walkingkooka.tree.expression.function.ExpressionFunctionKind;
 import walkingkooka.tree.expression.function.FakeExpressionFunctionContext;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
