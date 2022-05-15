@@ -51,9 +51,8 @@ abstract class NumberExpressionFunction<C extends ExpressionFunctionContext> imp
 
     private final FunctionExpressionName name;
 
-    final static ExpressionFunctionParameter<?> NUMBERS = ExpressionFunctionParameterName.with("numbers")
-            .variable(List.class)
-            .setTypeParameters(Lists.of(ExpressionNumber.class));
+    final static ExpressionFunctionParameter<ExpressionNumber> NUMBERS = ExpressionFunctionParameterName.with("numbers")
+            .variable(ExpressionNumber.class);
 
     final static List<ExpressionFunctionParameter<?>> PARAMETERS = Lists.of(
             NUMBERS
