@@ -48,7 +48,7 @@ final class NumberExpressionFunctionAverage<C extends ExpressionFunctionContext>
 
     @Override
     public List<ExpressionFunctionParameter<?>> parameters() {
-        return PARAMETERS_VALUES;
+        return PARAMETERS;
     }
 
     @Override

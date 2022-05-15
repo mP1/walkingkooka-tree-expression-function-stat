@@ -47,7 +47,7 @@ final class NumberExpressionFunctionCount<C extends ExpressionFunctionContext> e
 
     @Override
     public List<ExpressionFunctionParameter<?>> parameters() {
-        return PARAMETERS_VALUES;
+        return PARAMETERS;
     }
 
     @Override
