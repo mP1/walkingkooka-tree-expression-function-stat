@@ -47,7 +47,7 @@ final class NumberExpressionFunctionMax<C extends ExpressionFunctionContext> ext
 
     @Override
     public List<ExpressionFunctionParameter<?>> parameters() {
-        return PARAMETERS_VALUES;
+        return PARAMETERS;
     }
 
     @Override
