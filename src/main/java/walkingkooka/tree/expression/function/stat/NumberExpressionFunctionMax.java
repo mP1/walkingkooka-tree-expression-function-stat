@@ -18,8 +18,8 @@
 package walkingkooka.tree.expression.function.stat;
 
 import walkingkooka.Cast;
+import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionNumber;
-import walkingkooka.tree.expression.function.ExpressionFunctionContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -27,12 +27,12 @@ import java.util.List;
 /**
  * Returns the max value for one or more numbers.
  */
-final class NumberExpressionFunctionMax<C extends ExpressionFunctionContext> extends NumberExpressionFunction<C> {
+final class NumberExpressionFunctionMax<C extends ExpressionEvaluationContext> extends NumberExpressionFunction<C> {
 
     /**
      * Instance getter.
      */
-    static <C extends ExpressionFunctionContext> NumberExpressionFunctionMax<C> instance() {
+    static <C extends ExpressionEvaluationContext> NumberExpressionFunctionMax<C> instance() {
         return Cast.to(INSTANCE);
     }
 

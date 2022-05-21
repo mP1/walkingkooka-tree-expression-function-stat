@@ -20,11 +20,11 @@ package walkingkooka.tree.expression.function.stat;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
-import walkingkooka.tree.expression.function.ExpressionFunctionContext;
+import walkingkooka.tree.expression.ExpressionEvaluationContext;
 
 import java.util.Collections;
 
-public final class NumberExpressionFunctionSumTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionSum<ExpressionFunctionContext>> {
+public final class NumberExpressionFunctionSumTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionSum<ExpressionEvaluationContext>> {
 
     @Test
     public void testZeroParameters() {
@@ -61,12 +61,12 @@ public final class NumberExpressionFunctionSumTest extends NumberExpressionFunct
     }
 
     @Override
-    public NumberExpressionFunctionSum<ExpressionFunctionContext> createBiFunction() {
+    public NumberExpressionFunctionSum<ExpressionEvaluationContext> createBiFunction() {
         return NumberExpressionFunctionSum.instance();
     }
 
     @Override
-    public Class<NumberExpressionFunctionSum<ExpressionFunctionContext>> type() {
+    public Class<NumberExpressionFunctionSum<ExpressionEvaluationContext>> type() {
         return Cast.to(NumberExpressionFunctionSum.class);
     }
 }

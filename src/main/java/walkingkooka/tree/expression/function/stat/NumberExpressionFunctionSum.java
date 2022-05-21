@@ -18,8 +18,8 @@
 package walkingkooka.tree.expression.function.stat;
 
 import walkingkooka.Cast;
+import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionNumber;
-import walkingkooka.tree.expression.function.ExpressionFunctionContext;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
@@ -27,12 +27,12 @@ import java.util.List;
 /**
  * Sums all the parameters after converting them to a number.
  */
-final class NumberExpressionFunctionSum<C extends ExpressionFunctionContext> extends NumberExpressionFunction<C> {
+final class NumberExpressionFunctionSum<C extends ExpressionEvaluationContext> extends NumberExpressionFunction<C> {
 
     /**
      * Instance getter.
      */
-    static <C extends ExpressionFunctionContext> NumberExpressionFunctionSum<C> instance() {
+    static <C extends ExpressionEvaluationContext> NumberExpressionFunctionSum<C> instance() {
         return Cast.to(INSTANCE);
     }
 

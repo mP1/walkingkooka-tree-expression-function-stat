@@ -20,12 +20,12 @@ package walkingkooka.tree.expression.function.stat;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionNumberKind;
-import walkingkooka.tree.expression.function.ExpressionFunctionContext;
 
 import java.util.Collections;
 
-public final class NumberExpressionFunctionAverageTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionAverage<ExpressionFunctionContext>> {
+public final class NumberExpressionFunctionAverageTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionAverage<ExpressionEvaluationContext>> {
 
     private final static ExpressionNumberKind KIND = ExpressionNumberKind.DEFAULT;
 
@@ -56,12 +56,12 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
     }
 
     @Override
-    public NumberExpressionFunctionAverage<ExpressionFunctionContext> createBiFunction() {
+    public NumberExpressionFunctionAverage<ExpressionEvaluationContext> createBiFunction() {
         return NumberExpressionFunctionAverage.instance();
     }
 
     @Override
-    public Class<NumberExpressionFunctionAverage<ExpressionFunctionContext>> type() {
+    public Class<NumberExpressionFunctionAverage<ExpressionEvaluationContext>> type() {
         return Cast.to(NumberExpressionFunctionAverage.class);
     }
 }

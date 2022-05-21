@@ -20,7 +20,7 @@ package walkingkooka.tree.expression.function.stat;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
-import walkingkooka.tree.expression.function.ExpressionFunctionContext;
+import walkingkooka.tree.expression.ExpressionEvaluationContext;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -28,7 +28,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class NumberExpressionFunctionMaxTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionMax<ExpressionFunctionContext>> {
+public final class NumberExpressionFunctionMaxTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionMax<ExpressionEvaluationContext>> {
 
     @Test
     public void testZeroParameters() {
@@ -66,12 +66,12 @@ public final class NumberExpressionFunctionMaxTest extends NumberExpressionFunct
     }
 
     @Override
-    public NumberExpressionFunctionMax<ExpressionFunctionContext> createBiFunction() {
+    public NumberExpressionFunctionMax<ExpressionEvaluationContext> createBiFunction() {
         return NumberExpressionFunctionMax.instance();
     }
 
     @Override
-    public Class<NumberExpressionFunctionMax<ExpressionFunctionContext>> type() {
+    public Class<NumberExpressionFunctionMax<ExpressionEvaluationContext>> type() {
         return Cast.to(NumberExpressionFunctionMax.class);
     }
 }
