@@ -19,9 +19,9 @@ package walkingkooka.tree.expression.function.stat;
 
 import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.PublicStaticHelper;
+import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionNumber;
 import walkingkooka.tree.expression.function.ExpressionFunction;
-import walkingkooka.tree.expression.function.ExpressionFunctionContext;
 
 import java.util.function.Consumer;
 
@@ -46,35 +46,35 @@ public final class StatExpressionFunctions implements PublicStaticHelper {
     /**
      * {@see NumberExpressionFunctionAverage}
      */
-    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> average() {
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<ExpressionNumber, C> average() {
         return NumberExpressionFunctionAverage.instance();
     }
 
     /**
      * {@see NumberExpressionFunctionCount}
      */
-    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> count() {
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<ExpressionNumber, C> count() {
         return NumberExpressionFunctionCount.instance();
     }
 
     /**
      * {@see NumberExpressionFunctionMax}
      */
-    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> max() {
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<ExpressionNumber, C> max() {
         return NumberExpressionFunctionMax.instance();
     }
 
     /**
      * {@see NumberExpressionFunctionMin}
      */
-    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> min() {
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<ExpressionNumber, C> min() {
         return NumberExpressionFunctionMin.instance();
     }
 
     /**
      * {@see NumberExpressionFunctionSum}
      */
-    public static <C extends ExpressionFunctionContext> ExpressionFunction<ExpressionNumber, C> sum() {
+    public static <C extends ExpressionEvaluationContext> ExpressionFunction<ExpressionNumber, C> sum() {
         return NumberExpressionFunctionSum.instance();
     }
 
