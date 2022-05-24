@@ -102,7 +102,10 @@ public abstract class NumberExpressionFunctionTestCase<F extends ExpressionFunct
                     final Number number = value instanceof String ?
                             new BigDecimal((String) value) :
                             (Number) value;
-                    return Either.left(target.cast(kind.create(number)));
+                    return this.successfulConversion(
+                            target.cast(kind.create(number)),
+                            target
+                    );
                 } catch (final Exception fail) {
                     return this.failConversion(value, target);
                 }
