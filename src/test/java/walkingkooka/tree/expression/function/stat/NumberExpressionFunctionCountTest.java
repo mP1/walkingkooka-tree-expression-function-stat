@@ -48,7 +48,6 @@ public final class NumberExpressionFunctionCountTest extends NumberExpressionFun
     private void countAndCheck(final Object... values) {
         this.applyAndCheck(
                 Lists.of(values),
-                this.createContext(),
                 KIND.create(values.length)
         );
     }
