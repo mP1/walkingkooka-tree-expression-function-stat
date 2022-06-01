@@ -23,25 +23,34 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionNumberKind;
 
-import java.util.Collections;
-
 public final class NumberExpressionFunctionCountTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionCount<ExpressionEvaluationContext>> {
 
     private final static ExpressionNumberKind KIND = ExpressionNumberKind.DEFAULT;
 
     @Test
     public void testZeroParameters() {
-        this.applyAndCheck2(Lists.empty(), KIND.zero());
+        this.countAndCheck();
     }
 
     @Test
-    public void testOneParameters() {
-        this.applyAndCheck2(Lists.of(1), KIND.one());
+    public void testNumber() {
+        this.countAndCheck(1);
     }
 
     @Test
-    public void testTenParameters() {
-        this.applyAndCheck2(Collections.nCopies(10, 99), KIND.create(10));
+    public void testNumberAndString() {
+        this.countAndCheck(
+                1,
+                "abc"
+        );
+    }
+
+    private void countAndCheck(final Object... values) {
+        this.applyAndCheck(
+                Lists.of(values),
+                this.createContext(),
+                KIND.create(values.length)
+        );
     }
 
     @Test
