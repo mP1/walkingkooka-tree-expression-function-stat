@@ -52,14 +52,8 @@ final class NumberExpressionFunctionCount<C extends ExpressionEvaluationContext>
         return PARAMETERS;
     }
 
-    private final static Class<List<Object>> LIST = Cast.to(List.class);
-
-    final static ExpressionFunctionParameter<List<Object>> VALUES = ExpressionFunctionParameterName.with("values")
-            .variable(LIST)
-            .setTypeParameters(Lists.of(Object.class));
-
     final static List<ExpressionFunctionParameter<?>> PARAMETERS = Lists.of(
-            VALUES
+            ExpressionFunctionParameterName.VALUE.variable(Object.class)
     );
 
     @Override
