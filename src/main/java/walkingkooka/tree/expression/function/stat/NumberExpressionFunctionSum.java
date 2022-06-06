@@ -53,7 +53,8 @@ final class NumberExpressionFunctionSum<C extends ExpressionEvaluationContext> e
     @Override
     public ExpressionNumber apply(final List<Object> parameters,
                                   final C context) {
-        return parameters.stream()
+        return NUMBERS.getVariable(parameters, 0)
+                .stream()
                 .map(p -> (ExpressionNumber) p)
                 .reduce(
                         context.expressionNumberKind()
