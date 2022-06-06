@@ -53,11 +53,20 @@ final class NumberExpressionFunctionMin<C extends ExpressionEvaluationContext> e
     @Override
     public ExpressionNumber apply(final List<Object> parameters,
                                   final C context) {
+        return this.apply0(
+                NUMBERS.getVariable(parameters, 0),
+                context
+        );
+    }
+
+    private ExpressionNumber apply0(final List<ExpressionNumber> parameters,
+                                    final C context) {
         if (parameters.isEmpty()) {
             throw new IllegalArgumentException("Expected at least one number");
         }
 
-        final ExpressionNumber first = (ExpressionNumber) parameters.get(0);
+        final ExpressionNumber first = parameters.get(0);
+
         return parameters.stream()
                 .skip(1)
                 .map(p -> (ExpressionNumber) p)
