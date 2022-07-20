@@ -23,13 +23,11 @@ import walkingkooka.tree.expression.ExpressionNumber;
 import walkingkooka.tree.expression.ExpressionPurityContext;
 import walkingkooka.tree.expression.FunctionExpressionName;
 import walkingkooka.tree.expression.function.ExpressionFunction;
-import walkingkooka.tree.expression.function.ExpressionFunctionKind;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
+import walkingkooka.tree.expression.function.ExpressionFunctionParameterKind;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameterName;
 
-import java.util.EnumSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Base for any function that handles and requires numbers.
@@ -52,7 +50,8 @@ abstract class NumberExpressionFunction<C extends ExpressionEvaluationContext> i
     private final FunctionExpressionName name;
 
     final static ExpressionFunctionParameter<ExpressionNumber> NUMBERS = ExpressionFunctionParameterName.with("numbers")
-            .variable(ExpressionNumber.class);
+            .variable(ExpressionNumber.class)
+            .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE_FLATTEN_RESOLVE_REFERENCES);
 
     final static List<ExpressionFunctionParameter<?>> PARAMETERS = Lists.of(
             NUMBERS
@@ -70,18 +69,6 @@ abstract class NumberExpressionFunction<C extends ExpressionEvaluationContext> i
     public final boolean isPure(final ExpressionPurityContext context) {
         return true;
     }
-
-    @Override
-    public final Set<ExpressionFunctionKind> kinds() {
-        return KINDS;
-    }
-
-    private final Set<ExpressionFunctionKind> KINDS = EnumSet.of(
-            ExpressionFunctionKind.CONVERT_PARAMETERS,
-            ExpressionFunctionKind.EVALUATE_PARAMETERS,
-            ExpressionFunctionKind.FLATTEN,
-            ExpressionFunctionKind.RESOLVE_REFERENCES
-    );
 
     @Override
     public final String toString() {
