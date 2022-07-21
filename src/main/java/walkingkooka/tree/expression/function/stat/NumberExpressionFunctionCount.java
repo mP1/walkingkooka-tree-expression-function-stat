@@ -56,7 +56,7 @@ final class NumberExpressionFunctionCount<C extends ExpressionEvaluationContext>
     }
 
     private final static ExpressionFunctionParameter<Object> VALUE = ExpressionFunctionParameterName.VALUE.variable(Object.class)
-            .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE_RESOLVE_REFERENCES);
+            .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE_FLATTEN_RESOLVE_REFERENCES);
 
     @Override
     public List<ExpressionFunctionParameter<?>> parameters(final int count) {
