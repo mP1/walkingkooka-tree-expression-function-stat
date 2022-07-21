@@ -22,6 +22,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionNumber;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
+import walkingkooka.tree.expression.function.ExpressionFunctionParameterKind;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameterName;
 
 import java.util.List;
@@ -48,18 +49,19 @@ final class NumberExpressionFunctionCount<C extends ExpressionEvaluationContext>
     }
 
     @Override
-    public List<ExpressionFunctionParameter<?>> parameters(final int count) {
-        return PARAMETERS;
-    }
-
-    final static List<ExpressionFunctionParameter<?>> PARAMETERS = Lists.of(
-            ExpressionFunctionParameterName.VALUE.variable(Object.class)
-    );
-
-    @Override
     public ExpressionNumber apply(final List<Object> parameters,
                                   final C context) {
         return context.expressionNumberKind()
                 .create(parameters.size());
     }
+
+    private final static ExpressionFunctionParameter<Object> VALUE = ExpressionFunctionParameterName.VALUE.variable(Object.class)
+            .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE_RESOLVE_REFERENCES);
+
+    @Override
+    public List<ExpressionFunctionParameter<?>> parameters(final int count) {
+        return PARAMETERS;
+    }
+
+    final static List<ExpressionFunctionParameter<?>> PARAMETERS = Lists.of(VALUE);
 }
