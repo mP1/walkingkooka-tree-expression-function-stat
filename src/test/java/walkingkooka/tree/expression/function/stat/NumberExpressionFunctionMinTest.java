@@ -71,6 +71,11 @@ public final class NumberExpressionFunctionMinTest extends NumberExpressionFunct
     }
 
     @Override
+    public int minimumParameterCount() {
+        return 1;
+    }
+
+    @Override
     public Class<NumberExpressionFunctionMin<ExpressionEvaluationContext>> type() {
         return Cast.to(NumberExpressionFunctionMin.class);
     }

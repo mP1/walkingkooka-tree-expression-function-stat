@@ -71,6 +71,11 @@ public final class NumberExpressionFunctionMaxTest extends NumberExpressionFunct
     }
 
     @Override
+    public int minimumParameterCount() {
+        return 1;
+    }
+
+    @Override
     public Class<NumberExpressionFunctionMax<ExpressionEvaluationContext>> type() {
         return Cast.to(NumberExpressionFunctionMax.class);
     }
