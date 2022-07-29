@@ -35,7 +35,7 @@ public final class StatExpressionFunctionsTest implements PublicStaticHelperTest
     @Test
     public void testVisit() {
         final Set<FunctionExpressionName> names = Sets.sorted();
-        StatExpressionFunctions.visit((e) -> names.add(e.name()));
+        StatExpressionFunctions.visit((e) -> names.add(e.name().get()));
 
         this.checkEquals(
                 Arrays.stream(StatExpressionFunctions.class.getDeclaredMethods())
