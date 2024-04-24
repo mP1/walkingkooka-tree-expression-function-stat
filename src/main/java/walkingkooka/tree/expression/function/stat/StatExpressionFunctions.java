@@ -20,6 +20,7 @@ package walkingkooka.tree.expression.function.stat;
 import walkingkooka.collect.set.Sets;
 import walkingkooka.net.Url;
 import walkingkooka.reflect.PublicStaticHelper;
+import walkingkooka.text.CaseSensitivity;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
 import walkingkooka.tree.expression.ExpressionNumber;
 import walkingkooka.tree.expression.function.ExpressionFunction;
@@ -34,9 +35,10 @@ public final class StatExpressionFunctions implements PublicStaticHelper {
     /**
      * An {@link ExpressionFunctionProvider} with all the functions in this project.
      */
-    public static ExpressionFunctionProvider expressionFunctionProvider() {
+    public static ExpressionFunctionProvider expressionFunctionProvider(final CaseSensitivity nameCaseSensitivity) {
         return ExpressionFunctionProviders.basic(
                 Url.parseAbsolute("https://github.com/mP1/walkingkooka-tree-expression-function-stat/"),
+                nameCaseSensitivity,
                 Sets.of(
                         average(),
                         count(),
