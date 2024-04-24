@@ -21,29 +21,44 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.collect.set.Sets;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
-import walkingkooka.tree.expression.FunctionExpressionName;
 import walkingkooka.tree.expression.function.ExpressionFunction;
 
 import java.lang.reflect.Method;
 import java.math.MathContext;
 import java.util.Arrays;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class StatExpressionFunctionsTest implements PublicStaticHelperTesting<StatExpressionFunctions> {
 
     @Test
-    public void testVisit() {
-        final Set<FunctionExpressionName> names = Sets.sorted();
-        StatExpressionFunctions.visit((e) -> names.add(e.name().get()));
-
+    public void testExpressionFunctionProvider() {
         this.checkEquals(
                 Arrays.stream(StatExpressionFunctions.class.getDeclaredMethods())
                         .filter(m -> m.getReturnType() == ExpressionFunction.class)
                         .map(Method::getName)
+                        .map(n -> {
+                                    // JDK BUG cant have a lambda with switch as the body ???
+                                    switch (n) {
+                                        case "trueFunction":
+                                            return "true";
+                                        case "falseFunction":
+                                            return "false";
+                                        case "booleanFunction":
+                                            return "boolean";
+                                        case "switchFunction":
+                                            return "switch";
+                                        case "ifFunction":
+                                            return "if";
+                                        default:
+                                            return n;
+                                    }
+                                }
+                        ).collect(Collectors.toCollection(Sets::sorted)),
+                StatExpressionFunctions.expressionFunctionProvider()
+                        .expressionFunctionInfos()
+                        .stream()
+                        .map(i -> i.name().value())
                         .collect(Collectors.toCollection(Sets::sorted))
-                        .size(),
-                names.size()
         );
     }
 
