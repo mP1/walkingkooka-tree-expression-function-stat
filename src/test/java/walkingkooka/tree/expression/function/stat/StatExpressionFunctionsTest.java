@@ -18,7 +18,7 @@
 package walkingkooka.tree.expression.function.stat;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.collect.set.Sets;
+import walkingkooka.collect.set.SortedSets;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 import walkingkooka.text.CaseSensitivity;
@@ -54,12 +54,12 @@ public final class StatExpressionFunctionsTest implements PublicStaticHelperTest
                                             return n;
                                     }
                                 }
-                        ).collect(Collectors.toCollection(Sets::sorted)),
+                        ).collect(Collectors.toCollection(SortedSets::tree)),
                 StatExpressionFunctions.expressionFunctionProvider(CaseSensitivity.SENSITIVE)
                         .expressionFunctionInfos()
                         .stream()
                         .map(i -> i.name().value())
-                        .collect(Collectors.toCollection(Sets::sorted))
+                        .collect(Collectors.toCollection(SortedSets::tree))
         );
     }
 
