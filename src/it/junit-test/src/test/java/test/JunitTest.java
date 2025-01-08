@@ -41,39 +41,39 @@ public class JunitTest {
         final ExpressionNumberKind kind = ExpressionNumberKind.BIG_DECIMAL;
 
         Assert.assertEquals(
-                kind.create(3),
-                StatExpressionFunctions.count()
-                        .apply(
-                                Lists.of(
-                                        kind.create(123),
-                                        kind.create(456),
-                                        kind.create(789)
-                                ),
-                                new FakeExpressionEvaluationContext() {
-                                    @Override
-                                    public ExpressionNumberKind expressionNumberKind() {
-                                        return kind;
-                                    }
+            kind.create(3),
+            StatExpressionFunctions.count()
+                .apply(
+                    Lists.of(
+                        kind.create(123),
+                        kind.create(456),
+                        kind.create(789)
+                    ),
+                    new FakeExpressionEvaluationContext() {
+                        @Override
+                        public ExpressionNumberKind expressionNumberKind() {
+                            return kind;
+                        }
 
-                                    @Override
-                                    public MathContext mathContext() {
-                                        return MathContext.DECIMAL128;
-                                    }
+                        @Override
+                        public MathContext mathContext() {
+                            return MathContext.DECIMAL128;
+                        }
 
-                                    @Override
-                                    public <TT> Either<TT, String> convert(final Object value,
-                                                                           final Class<TT> target) {
-                                        try {
-                                            return this.successfulConversion(
-                                                    (TT) kind.create((Number) value),
-                                                    target
-                                            );
-                                        } catch (final Exception fail) {
-                                            return this.failConversion(value, target);
-                                        }
-                                    }
-                                }
-                        )
+                        @Override
+                        public <TT> Either<TT, String> convert(final Object value,
+                                                               final Class<TT> target) {
+                            try {
+                                return this.successfulConversion(
+                                    (TT) kind.create((Number) value),
+                                    target
+                                );
+                            } catch (final Exception fail) {
+                                return this.failConversion(value, target);
+                            }
+                        }
+                    }
+                )
         );
     }
 }

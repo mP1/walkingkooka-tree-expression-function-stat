@@ -37,15 +37,15 @@ public final class StatExpressionFunctions implements PublicStaticHelper {
      */
     public static ExpressionFunctionProvider expressionFunctionProvider(final CaseSensitivity nameCaseSensitivity) {
         return ExpressionFunctionProviders.basic(
-                Url.parseAbsolute("https://github.com/mP1/walkingkooka-tree-expression-function-stat/"),
-                nameCaseSensitivity,
-                Sets.of(
-                        average(),
-                        count(),
-                        max(),
-                        min(),
-                        sum()
-                )
+            Url.parseAbsolute("https://github.com/mP1/walkingkooka-tree-expression-function-stat/"),
+            nameCaseSensitivity,
+            Sets.of(
+                average(),
+                count(),
+                max(),
+                min(),
+                sum()
+            )
         );
     }
 

@@ -54,8 +54,8 @@ final class NumberExpressionFunctionMin<C extends ExpressionEvaluationContext> e
     public ExpressionNumber apply(final List<Object> parameters,
                                   final C context) {
         return this.apply0(
-                NUMBERS.getVariable(parameters, 0),
-                context
+            NUMBERS.getVariable(parameters, 0),
+            context
         );
     }
 
@@ -68,8 +68,8 @@ final class NumberExpressionFunctionMin<C extends ExpressionEvaluationContext> e
         final ExpressionNumber first = parameters.get(0);
 
         return parameters.stream()
-                .skip(1)
-                .map(p -> (ExpressionNumber) p)
-                .reduce(first, ExpressionNumber::min);
+            .skip(1)
+            .map(p -> (ExpressionNumber) p)
+            .reduce(first, ExpressionNumber::min);
     }
 }

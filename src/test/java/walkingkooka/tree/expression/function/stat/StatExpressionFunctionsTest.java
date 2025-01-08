@@ -34,32 +34,32 @@ public final class StatExpressionFunctionsTest implements PublicStaticHelperTest
     @Test
     public void testExpressionFunctionProvider() {
         this.checkEquals(
-                Arrays.stream(StatExpressionFunctions.class.getDeclaredMethods())
-                        .filter(m -> m.getReturnType() == ExpressionFunction.class)
-                        .map(Method::getName)
-                        .map(n -> {
-                                    // JDK BUG cant have a lambda with switch as the body ???
-                                    switch (n) {
-                                        case "trueFunction":
-                                            return "true";
-                                        case "falseFunction":
-                                            return "false";
-                                        case "booleanFunction":
-                                            return "boolean";
-                                        case "switchFunction":
-                                            return "switch";
-                                        case "ifFunction":
-                                            return "if";
-                                        default:
-                                            return n;
-                                    }
-                                }
-                        ).collect(Collectors.toCollection(SortedSets::tree)),
-                StatExpressionFunctions.expressionFunctionProvider(CaseSensitivity.SENSITIVE)
-                        .expressionFunctionInfos()
-                        .stream()
-                        .map(i -> i.name().value())
-                        .collect(Collectors.toCollection(SortedSets::tree))
+            Arrays.stream(StatExpressionFunctions.class.getDeclaredMethods())
+                .filter(m -> m.getReturnType() == ExpressionFunction.class)
+                .map(Method::getName)
+                .map(n -> {
+                        // JDK BUG cant have a lambda with switch as the body ???
+                        switch (n) {
+                            case "trueFunction":
+                                return "true";
+                            case "falseFunction":
+                                return "false";
+                            case "booleanFunction":
+                                return "boolean";
+                            case "switchFunction":
+                                return "switch";
+                            case "ifFunction":
+                                return "if";
+                            default:
+                                return n;
+                        }
+                    }
+                ).collect(Collectors.toCollection(SortedSets::tree)),
+            StatExpressionFunctions.expressionFunctionProvider(CaseSensitivity.SENSITIVE)
+                .expressionFunctionInfos()
+                .stream()
+                .map(i -> i.name().value())
+                .collect(Collectors.toCollection(SortedSets::tree))
         );
     }
 

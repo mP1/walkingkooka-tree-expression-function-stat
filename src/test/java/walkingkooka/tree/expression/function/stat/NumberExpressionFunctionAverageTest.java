@@ -32,16 +32,16 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
     @Test
     public void testZeroParameters() {
         this.applyAndCheck2(
-                Lists.empty(),
-                KIND.zero()
+            Lists.empty(),
+            KIND.zero()
         );
     }
 
     @Test
     public void testOneParameters() {
         this.applyAndCheck2(
-                Lists.of(1),
-                KIND.one()
+            Lists.of(1),
+            KIND.one()
         );
     }
 
