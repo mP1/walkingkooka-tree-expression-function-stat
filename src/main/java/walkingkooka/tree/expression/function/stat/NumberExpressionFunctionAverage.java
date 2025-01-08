@@ -55,8 +55,8 @@ final class NumberExpressionFunctionAverage<C extends ExpressionEvaluationContex
     public ExpressionNumber apply(final List<Object> parameters,
                                   final C context) {
         return this.apply0(
-                NUMBERS.getVariable(parameters, 0),
-                context
+            NUMBERS.getVariable(parameters, 0),
+            context
         );
     }
 
@@ -65,9 +65,9 @@ final class NumberExpressionFunctionAverage<C extends ExpressionEvaluationContex
         final int count = parameters.size();
         final ExpressionNumberKind kind = context.expressionNumberKind();
         return 0 == count ?
-                kind.zero() :
-                parameters.stream()
-                        .reduce(kind.zero(), (subTotal, p) -> subTotal.add(p, context))
-                        .divide(kind.create(count), context);
+            kind.zero() :
+            parameters.stream()
+                .reduce(kind.zero(), (subTotal, p) -> subTotal.add(p, context))
+                .divide(kind.create(count), context);
     }
 }

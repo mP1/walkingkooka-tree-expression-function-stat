@@ -41,7 +41,7 @@ abstract class NumberExpressionFunction<C extends ExpressionEvaluationContext> i
     NumberExpressionFunction(final String name) {
         super();
         this.name = Optional.of(
-                ExpressionFunctionName.with(name)
+            ExpressionFunctionName.with(name)
         );
     }
 
@@ -53,11 +53,11 @@ abstract class NumberExpressionFunction<C extends ExpressionEvaluationContext> i
     private final Optional<ExpressionFunctionName> name;
 
     final static ExpressionFunctionParameter<ExpressionNumber> NUMBERS = ExpressionFunctionParameterName.with("numbers")
-            .variable(ExpressionNumber.class)
-            .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE_FLATTEN_RESOLVE_REFERENCES);
+        .variable(ExpressionNumber.class)
+        .setKinds(ExpressionFunctionParameterKind.CONVERT_EVALUATE_FLATTEN_RESOLVE_REFERENCES);
 
     final static List<ExpressionFunctionParameter<?>> PARAMETERS = Lists.of(
-            NUMBERS
+        NUMBERS
     );
 
     @Override
@@ -76,7 +76,7 @@ abstract class NumberExpressionFunction<C extends ExpressionEvaluationContext> i
     @Override
     public final String toString() {
         return this.name()
-                .get()
-                .toString();
+            .get()
+            .toString();
     }
 }

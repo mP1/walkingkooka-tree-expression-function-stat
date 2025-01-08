@@ -29,24 +29,24 @@ public final class NumberExpressionFunctionSumTest extends NumberExpressionFunct
     @Test
     public void testZeroParameters() {
         this.applyAndCheck2(
-                Lists.empty(),
-                KIND.zero()
+            Lists.empty(),
+            KIND.zero()
         );
     }
 
     @Test
     public void testOneParameters() {
         this.applyAndCheck2(
-                Lists.of(1),
-                KIND.one()
+            Lists.of(1),
+            KIND.one()
         );
     }
 
     @Test
     public void testFewParameters() {
         this.applyAndCheck2(
-                Lists.of(1, 2, 3.5),
-                KIND.create(1 + 2 + 3.5)
+            Lists.of(1, 2, 3.5),
+            KIND.create(1 + 2 + 3.5)
         );
     }
 

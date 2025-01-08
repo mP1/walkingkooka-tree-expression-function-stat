@@ -54,12 +54,12 @@ final class NumberExpressionFunctionSum<C extends ExpressionEvaluationContext> e
     public ExpressionNumber apply(final List<Object> parameters,
                                   final C context) {
         return NUMBERS.getVariable(parameters, 0)
-                .stream()
-                .map(p -> (ExpressionNumber) p)
-                .reduce(
-                        context.expressionNumberKind()
-                                .zero(),
-                        (subTotal, p) -> subTotal.add(p, context)
-                );
+            .stream()
+            .map(p -> (ExpressionNumber) p)
+            .reduce(
+                context.expressionNumberKind()
+                    .zero(),
+                (subTotal, p) -> subTotal.add(p, context)
+            );
     }
 }

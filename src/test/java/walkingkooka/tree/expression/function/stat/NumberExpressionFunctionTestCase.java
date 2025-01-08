@@ -45,11 +45,11 @@ public abstract class NumberExpressionFunctionTestCase<F extends ExpressionFunct
     public final void testDoesntConvert() {
         if (!(this instanceof NumberExpressionFunctionCountTest)) {
             assertThrows(
-                    ClassCastException.class,
-                    () -> {
-                        this.createBiFunction()
-                                .apply(Lists.of(1), this.createContext());
-                    }
+                ClassCastException.class,
+                () -> {
+                    this.createBiFunction()
+                        .apply(Lists.of(1), this.createContext());
+                }
             );
         }
     }
@@ -59,12 +59,12 @@ public abstract class NumberExpressionFunctionTestCase<F extends ExpressionFunct
                                      final List<Object> parameters,
                                      final ExpressionNumber result) {
         this.applyAndCheck2(
-                function,
-                parameters.stream()
-                        .map(i -> KIND.create((Number) i))
-                        .collect(Collectors.toList()),
-                this.createContext(),
-                result
+            function,
+            parameters.stream()
+                .map(i -> KIND.create((Number) i))
+                .collect(Collectors.toList()),
+            this.createContext(),
+            result
         );
     }
 
@@ -100,11 +100,11 @@ public abstract class NumberExpressionFunctionTestCase<F extends ExpressionFunct
                                                    final Class<TT> target) {
                 try {
                     final Number number = value instanceof String ?
-                            new BigDecimal((String) value) :
-                            (Number) value;
+                        new BigDecimal((String) value) :
+                        (Number) value;
                     return this.successfulConversion(
-                            target.cast(kind.create(number)),
-                            target
+                        target.cast(kind.create(number)),
+                        target
                     );
                 } catch (final Exception fail) {
                     return this.failConversion(value, target);

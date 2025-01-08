@@ -40,15 +40,15 @@ public final class NumberExpressionFunctionCountTest extends NumberExpressionFun
     @Test
     public void testNumberAndString() {
         this.countAndCheck(
-                1,
-                "abc"
+            1,
+            "abc"
         );
     }
 
     private void countAndCheck(final Object... values) {
         this.applyAndCheck(
-                Lists.of(values),
-                KIND.create(values.length)
+            Lists.of(values),
+            KIND.create(values.length)
         );
     }
 
