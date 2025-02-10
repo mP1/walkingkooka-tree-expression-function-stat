@@ -23,6 +23,7 @@ import walkingkooka.tree.expression.ExpressionNumber;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Returns the min value for one or more numbers.
@@ -59,9 +60,7 @@ final class NumberExpressionFunctionMin<C extends ExpressionEvaluationContext> e
     }
 
     private ExpressionNumber apply0(final List<ExpressionNumber> parameters) {
-        if (parameters.isEmpty()) {
-            throw new IllegalArgumentException("Expected at least one number");
-        }
+        Objects.requireNonNull(parameters, "parameters");
 
         ExpressionNumber min = null;
 
@@ -73,6 +72,10 @@ final class NumberExpressionFunctionMin<C extends ExpressionEvaluationContext> e
                     min = min.min(number);
                 }
             }
+        }
+
+        if (null == min) {
+            throw new IllegalArgumentException("Expected at least one number");
         }
 
         return min;
