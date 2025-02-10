@@ -36,6 +36,20 @@ public final class NumberExpressionFunctionMaxTest extends NumberExpressionFunct
     }
 
     @Test
+    public void testAllNullsFails() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> this.createBiFunction()
+                .apply(
+                    Lists.of(
+                        (Object)null
+                    ),
+                    this.createContext()
+                )
+        );
+    }
+
+    @Test
     public void testOneParameters() {
         this.applyAndCheck2(Lists.of(1), KIND.create(1));
     }
@@ -58,6 +72,19 @@ public final class NumberExpressionFunctionMaxTest extends NumberExpressionFunct
     @Test
     public void testDifferentNumberTypes() {
         this.applyAndCheck2(List.of((byte) 1, (short) 2, 3, 4L, BigInteger.valueOf(5), BigDecimal.valueOf(6), KIND.create(7), 8.5), KIND.create(8.5));
+    }
+
+    @Test
+    public void testApplySkipNulls() {
+        this.applyAndCheck2(
+            Lists.of(
+                null,
+                10,
+                20,
+                5
+            ),
+            KIND.create(20)
+        );
     }
 
     @Test
