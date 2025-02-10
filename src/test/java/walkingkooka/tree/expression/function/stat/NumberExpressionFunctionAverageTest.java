@@ -33,7 +33,7 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
     private final static ExpressionNumberKind KIND = ExpressionNumberKind.DEFAULT;
 
     @Test
-    public void testZeroParameters() {
+    public void testApplyZeroParameters() {
         this.applyAndCheck2(
             Lists.of(1),
             KIND.one()
@@ -41,12 +41,12 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
     }
 
     @Test
-    public void testTenParameters() {
+    public void testApplyTenParameters() {
         this.applyAndCheck2(Collections.nCopies(10, 20), KIND.create(20));
     }
 
     @Test
-    public void testSkipsNull() {
+    public void testApplySkipsNull() {
         this.applyAndCheck2(
             Lists.of(
                 null,
@@ -62,7 +62,7 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
     }
 
     @Test
-    public void testOnlyNulls() {
+    public void testApplyOnlyNulls() {
         final ExpressionEvaluationException thrown = assertThrows(
             ExpressionEvaluationException.class,
             () -> this.apply2(
@@ -77,11 +77,6 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
         );
     }
 
-    @Test
-    public void testToString() {
-        this.toStringAndCheck(this.createBiFunction(), "average");
-    }
-
     @Override
     public NumberExpressionFunctionAverage<ExpressionEvaluationContext> createBiFunction() {
         return NumberExpressionFunctionAverage.instance();
@@ -91,6 +86,15 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
     public int minimumParameterCount() {
         return 1;
     }
+
+    // toString.........................................................................................................
+
+    @Test
+    public void testToString() {
+        this.toStringAndCheck(this.createBiFunction(), "average");
+    }
+
+    // class............................................................................................................
 
     @Override
     public Class<NumberExpressionFunctionAverage<ExpressionEvaluationContext>> type() {
