@@ -56,6 +56,19 @@ public final class NumberExpressionFunctionSumTest extends NumberExpressionFunct
     }
 
     @Test
+    public void testApplySkipNulls() {
+        this.applyAndCheck2(
+            Lists.of(
+                11,
+                22,
+                null,
+                33
+            ),
+            KIND.create(11 + 22 + 33)
+        );
+    }
+
+    @Test
     public void testToString() {
         this.toStringAndCheck(this.createBiFunction(), "sum");
     }

@@ -23,9 +23,10 @@ import walkingkooka.tree.expression.ExpressionNumber;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
- * Sums all the parameters after converting them to a number.
+ * Sums all the parameters after converting them to a number. Null values are skipped.
  */
 final class NumberExpressionFunctionSum<C extends ExpressionEvaluationContext> extends NumberExpressionFunction<C> {
 
@@ -55,6 +56,7 @@ final class NumberExpressionFunctionSum<C extends ExpressionEvaluationContext> e
                                   final C context) {
         return NUMBERS.getVariable(parameters, 0)
             .stream()
+            .filter(Objects::nonNull)
             .map(p -> (ExpressionNumber) p)
             .reduce(
                 context.expressionNumberKind()
