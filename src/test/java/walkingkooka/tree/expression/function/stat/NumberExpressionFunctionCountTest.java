@@ -45,6 +45,19 @@ public final class NumberExpressionFunctionCountTest extends NumberExpressionFun
         );
     }
 
+    @Test
+    public void testSkipsNull() {
+        this.applyAndCheck(
+            Lists.of(
+                null,
+                111,
+                null,
+                222
+            ),
+            KIND.create(2)
+        );
+    }
+
     private void countAndCheck(final Object... values) {
         this.applyAndCheck(
             Lists.of(values),
