@@ -31,37 +31,81 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public final class NumberExpressionFunctionMinTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionMin<ExpressionEvaluationContext>> {
 
     @Test
-    public void testZeroParameters() {
-        assertThrows(IllegalArgumentException.class, () -> this.createBiFunction().apply(Lists.empty(), this.createContext()));
+    public void testApplyZeroParameters() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> this.createBiFunction()
+                .apply(
+                    Lists.empty(),
+                    this.createContext()
+                )
+        );
     }
 
     @Test
-    public void testOneParameters() {
-        this.applyAndCheck2(Lists.of(1), KIND.create(1));
+    public void testApplyOneParameters() {
+        this.applyAndCheck2(
+            Lists.of(1),
+            KIND.create(1)
+        );
     }
 
     @Test
-    public void testTwoParameters() {
-        this.applyAndCheck2(Lists.of(-10, 20), KIND.create(-10));
+    public void testApplyTwoParameters() {
+        this.applyAndCheck2(
+            Lists.of(
+                -10,
+                20
+            ),
+            KIND.create(-10)
+        );
     }
 
     @Test
-    public void testManyParameters() {
-        this.applyAndCheck2(Lists.of(99, 5, 10, 20), KIND.create(5));
+    public void testApplyManyParameters() {
+        this.applyAndCheck2(
+            Lists.of(
+                99,
+                5,
+                10,
+                20
+            ),
+            KIND.create(5)
+        );
     }
 
     @Test
-    public void testManyParameters2() {
-        this.applyAndCheck2(Lists.of(-99, -5.5, -10, -20), KIND.create(-99));
+    public void testApplyManyParameters2() {
+        this.applyAndCheck2(
+            Lists.of(
+                -99,
+                -5.5,
+                -10,
+                -20
+            ),
+            KIND.create(-99)
+        );
     }
 
     @Test
-    public void testDifferentNumberTypes() {
-        this.applyAndCheck2(List.of((byte) 1, (short) 2, 3, 4L, BigInteger.valueOf(5), BigDecimal.valueOf(6), KIND.create(7), 8.5), KIND.create(1));
+    public void testApplyMixedNumberTypes() {
+        this.applyAndCheck2(
+            List.of(
+                (byte) 1,
+                (short) 2,
+                3,
+                4L,
+                BigInteger.valueOf(5),
+                BigDecimal.valueOf(6),
+                KIND.create(7),
+                8.5
+            ),
+            KIND.create(1)
+        );
     }
 
     @Test
-    public void testSkipNulls() {
+    public void testApplySkipNulls() {
         this.applyAndCheck2(
             Lists.of(
                 null,
@@ -73,11 +117,6 @@ public final class NumberExpressionFunctionMinTest extends NumberExpressionFunct
         );
     }
 
-    @Test
-    public void testToString() {
-        this.toStringAndCheck(this.createBiFunction(), "min");
-    }
-
     @Override
     public NumberExpressionFunctionMin<ExpressionEvaluationContext> createBiFunction() {
         return NumberExpressionFunctionMin.instance();
@@ -87,7 +126,16 @@ public final class NumberExpressionFunctionMinTest extends NumberExpressionFunct
     public int minimumParameterCount() {
         return 1;
     }
+    
+    // toString.........................................................................................................
 
+    @Test
+    public void testToString() {
+        this.toStringAndCheck(this.createBiFunction(), "min");
+    }
+
+    // class.............................................................................................................
+    
     @Override
     public Class<NumberExpressionFunctionMin<ExpressionEvaluationContext>> type() {
         return Cast.to(NumberExpressionFunctionMin.class);
