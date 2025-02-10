@@ -61,8 +61,10 @@ public abstract class NumberExpressionFunctionTestCase<F extends ExpressionFunct
         this.applyAndCheck2(
             function,
             parameters.stream()
-                .map(i -> KIND.create((Number) i))
-                .collect(Collectors.toList()),
+                .map(i -> null != i ?
+                    KIND.create((Number) i) :
+                    null
+                ).collect(Collectors.toList()),
             this.createContext(),
             result
         );
