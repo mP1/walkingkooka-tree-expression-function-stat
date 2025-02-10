@@ -43,6 +43,20 @@ public final class NumberExpressionFunctionMinTest extends NumberExpressionFunct
     }
 
     @Test
+    public void testApplyAllNullsFails() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> this.createBiFunction()
+                .apply(
+                    Lists.of(
+                        (Object) null
+                    ),
+                    this.createContext()
+                )
+        );
+    }
+
+    @Test
     public void testApplyOneParameters() {
         this.applyAndCheck2(
             Lists.of(1),
