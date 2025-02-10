@@ -54,22 +54,27 @@ final class NumberExpressionFunctionMin<C extends ExpressionEvaluationContext> e
     public ExpressionNumber apply(final List<Object> parameters,
                                   final C context) {
         return this.apply0(
-            NUMBERS.getVariable(parameters, 0),
-            context
+            NUMBERS.getVariable(parameters, 0)
         );
     }
 
-    private ExpressionNumber apply0(final List<ExpressionNumber> parameters,
-                                    final C context) {
+    private ExpressionNumber apply0(final List<ExpressionNumber> parameters) {
         if (parameters.isEmpty()) {
             throw new IllegalArgumentException("Expected at least one number");
         }
 
-        final ExpressionNumber first = parameters.get(0);
+        ExpressionNumber min = null;
 
-        return parameters.stream()
-            .skip(1)
-            .map(p -> (ExpressionNumber) p)
-            .reduce(first, ExpressionNumber::min);
+        for(final ExpressionNumber number : parameters) {
+            if(null == min) {
+                min = number;
+            } else {
+                if(null != number) {
+                    min = min.min(number);
+                }
+            }
+        }
+
+        return min;
     }
 }

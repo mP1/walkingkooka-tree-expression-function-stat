@@ -61,6 +61,19 @@ public final class NumberExpressionFunctionMinTest extends NumberExpressionFunct
     }
 
     @Test
+    public void testSkipNulls() {
+        this.applyAndCheck2(
+            Lists.of(
+                null,
+                10,
+                20,
+                5
+            ),
+            KIND.create(5)
+        );
+    }
+
+    @Test
     public void testToString() {
         this.toStringAndCheck(this.createBiFunction(), "min");
     }
