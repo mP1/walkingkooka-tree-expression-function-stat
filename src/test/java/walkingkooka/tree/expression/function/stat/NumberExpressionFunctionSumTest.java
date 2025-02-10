@@ -27,7 +27,7 @@ import java.util.Collections;
 public final class NumberExpressionFunctionSumTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionSum<ExpressionEvaluationContext>> {
 
     @Test
-    public void testZeroParameters() {
+    public void testApplyZeroParameters() {
         this.applyAndCheck2(
             Lists.empty(),
             KIND.zero()
@@ -35,7 +35,7 @@ public final class NumberExpressionFunctionSumTest extends NumberExpressionFunct
     }
 
     @Test
-    public void testOneParameters() {
+    public void testApplyOneParameters() {
         this.applyAndCheck2(
             Lists.of(1),
             KIND.one()
@@ -43,7 +43,7 @@ public final class NumberExpressionFunctionSumTest extends NumberExpressionFunct
     }
 
     @Test
-    public void testFewParameters() {
+    public void testApplyFewParameters() {
         this.applyAndCheck2(
             Lists.of(1, 2, 3.5),
             KIND.create(1 + 2 + 3.5)
@@ -51,8 +51,11 @@ public final class NumberExpressionFunctionSumTest extends NumberExpressionFunct
     }
 
     @Test
-    public void testTenParameters() {
-        this.applyAndCheck2(Collections.nCopies(10, 20), KIND.create(10 * 20));
+    public void testApplyTenParameters() {
+        this.applyAndCheck2(
+            Collections.nCopies(10, 20),
+            KIND.create(10 * 20)
+        );
     }
 
     @Test
@@ -68,11 +71,6 @@ public final class NumberExpressionFunctionSumTest extends NumberExpressionFunct
         );
     }
 
-    @Test
-    public void testToString() {
-        this.toStringAndCheck(this.createBiFunction(), "sum");
-    }
-
     @Override
     public NumberExpressionFunctionSum<ExpressionEvaluationContext> createBiFunction() {
         return NumberExpressionFunctionSum.instance();
@@ -82,6 +80,15 @@ public final class NumberExpressionFunctionSumTest extends NumberExpressionFunct
     public int minimumParameterCount() {
         return 1;
     }
+
+    // toString.........................................................................................................
+
+    @Test
+    public void testToString() {
+        this.toStringAndCheck(this.createBiFunction(), "sum");
+    }
+
+    // class............................................................................................................
 
     @Override
     public Class<NumberExpressionFunctionSum<ExpressionEvaluationContext>> type() {
