@@ -21,9 +21,12 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.tree.expression.ExpressionEvaluationContext;
+import walkingkooka.tree.expression.ExpressionEvaluationException;
 import walkingkooka.tree.expression.ExpressionNumberKind;
 
 import java.util.Collections;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class NumberExpressionFunctionAverageTest extends NumberExpressionFunctionTestCase<NumberExpressionFunctionAverage<ExpressionEvaluationContext>> {
 
@@ -31,14 +34,6 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
 
     @Test
     public void testZeroParameters() {
-        this.applyAndCheck2(
-            Lists.empty(),
-            KIND.zero()
-        );
-    }
-
-    @Test
-    public void testOneParameters() {
         this.applyAndCheck2(
             Lists.of(1),
             KIND.one()
@@ -48,6 +43,38 @@ public final class NumberExpressionFunctionAverageTest extends NumberExpressionF
     @Test
     public void testTenParameters() {
         this.applyAndCheck2(Collections.nCopies(10, 20), KIND.create(20));
+    }
+
+    @Test
+    public void testSkipsNull() {
+        this.applyAndCheck2(
+            Lists.of(
+                null,
+                1,
+                20,
+                null,
+                300
+            ),
+            KIND.create(
+                (1 + 20 + 300) / 3
+            )
+        );
+    }
+
+    @Test
+    public void testOnlyNulls() {
+        final ExpressionEvaluationException thrown = assertThrows(
+            ExpressionEvaluationException.class,
+            () -> this.apply2(
+                null,
+                null
+            )
+        );
+
+        this.checkEquals(
+            "Division by zero",
+            thrown.getMessage()
+        );
     }
 
     @Test
