@@ -26,7 +26,6 @@ import walkingkooka.tree.expression.function.ExpressionFunctionParameterKind;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameterName;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Counts the number of parameters given to this function.
@@ -72,8 +71,6 @@ final class NumberExpressionFunctionCount<C extends ExpressionEvaluationContext>
 
     private ExpressionNumber apply0(final List<?> parameters,
                                     final C context) {
-        Objects.requireNonNull(parameters, "parameters");
-
         int count = 0;
 
         for (final Object value : parameters) {

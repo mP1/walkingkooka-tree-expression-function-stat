@@ -23,7 +23,6 @@ import walkingkooka.tree.expression.ExpressionNumber;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Returns the max value for one or more numbers.
@@ -63,8 +62,6 @@ final class NumberExpressionFunctionMax<C extends ExpressionEvaluationContext> e
     }
 
     private ExpressionNumber apply0(final List<ExpressionNumber> parameters) {
-        Objects.requireNonNull(parameters, "parameters");
-
         ExpressionNumber max = null;
 
         for(final ExpressionNumber number : parameters) {
