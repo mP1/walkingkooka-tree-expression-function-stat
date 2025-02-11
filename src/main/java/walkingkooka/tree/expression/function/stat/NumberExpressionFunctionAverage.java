@@ -24,7 +24,6 @@ import walkingkooka.tree.expression.ExpressionNumberKind;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Sums all the parameters after converting them to a number.
@@ -63,8 +62,6 @@ final class NumberExpressionFunctionAverage<C extends ExpressionEvaluationContex
 
     private ExpressionNumber apply0(final List<ExpressionNumber> parameters,
                                     final C context) {
-        Objects.requireNonNull(parameters, "parameters");
-
         final ExpressionNumberKind kind = context.expressionNumberKind();
 
         ExpressionNumber sum = kind.zero();
