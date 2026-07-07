@@ -11,10 +11,10 @@ A collection of ExpressionFunction(s) that operate mostly on lists and are stati
 
 ## [Functions](https://github.com/mP1/walkingkooka-tree/blob/master/src/main/java/walkingkooka/tree/expression/function/ExpressionFunction.java)
 
-- average(number...)
-- count(object...)
-- max(number...)
-- min(number...)
-- sum(number...)
+- [average](https://github.com/mP1/walkingkooka-tree-expression-function-stat/blob/master/src/main/java/walkingkooka/tree/expression/function/stat/NumberExpressionFunctionAverage.java)
+- [count](https://github.com/mP1/walkingkooka-tree-expression-function-stat/blob/master/src/main/java/walkingkooka/tree/expression/function/stat/NumberExpressionFunctionCount.java)
+- [max](https://github.com/mP1/walkingkooka-tree-expression-function-stat/blob/master/src/main/java/walkingkooka/tree/expression/function/stat/NumberExpressionFunctionMax.java)
+- [min](https://github.com/mP1/walkingkooka-tree-expression-function-stat/blob/master/src/main/java/walkingkooka/tree/expression/function/stat/NumberExpressionFunctionMin.java)
+- [sum](https://github.com/mP1/walkingkooka-tree-expression-function-stat/blob/master/src/main/java/walkingkooka/tree/expression/function/stat/NumberExpressionFunctionSum.java)
 
 Many more functions are outstanding and remain TODO.
