@@ -6,10 +6,8 @@
 ![](https://tokei.rs/b1/github/mP1/walkingkooka-tree-expression-function-stat)
 [![J2CL compatible](https://img.shields.io/badge/J2CL-compatible-brightgreen.svg)](https://github.com/mP1/j2cl-central)
 
-
 # walkingkooka-tree-expression-function-stat
 A collection of ExpressionFunction(s) that operate mostly on lists and are statistical in nature.
-
 
 ## [Functions](https://github.com/mP1/walkingkooka-tree/blob/master/src/main/java/walkingkooka/tree/expression/function/ExpressionFunction.java)
 
@@ -20,5 +18,3 @@ A collection of ExpressionFunction(s) that operate mostly on lists and are stati
 - sum(number...)
 
 Many more functions are outstanding and remain TODO.
-
-
