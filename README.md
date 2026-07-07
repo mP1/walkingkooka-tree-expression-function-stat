@@ -11,7 +11,7 @@
 A collection of ExpressionFunction(s) that operate mostly on lists and are statistical in nature.
 
 
-## Available functions
+## [Functions](https://github.com/mP1/walkingkooka-tree/blob/master/src/main/java/walkingkooka/tree/expression/function/ExpressionFunction.java)
 
 - average(number...)
 - count(object...)
